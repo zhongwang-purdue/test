@@ -1,0 +1,82 @@
+// Frontend (index.html)
+/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button onclick="addTask()">Add Task</button>
+    <input type="text" id="searchInput" placeholder="Search tasks by title">
+    <button onclick="searchTasks()">Search Tasks</button>
+    <ul id="taskList"></ul>
+
+    <script>const apiUrl = 'http://localhost:5000/tasks';
+
+    async function fetchTasks() {
+      const response = await fetch(apiUrl);
+      const tasks = await response.json();
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.textContent = task.title;
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteTask(task._id);
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+      });
+    }
+
+    async function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const title = taskInput.value;
+      if (title) {
+        await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ title }),
+        });
+        taskInput.value = '';
+        fetchTasks();
+      }
+    }
+
+    async function deleteTask(id) {
+      await fetch(`${apiUrl}/${id}`, {
+        method: 'DELETE',
+      });
+      fetchTasks();
+    }
+
+    async function searchTasks() {
+      const searchInput = document.getElementById('searchInput');
+      const title = searchInput.value;
+      if (title) {
+        const response = await fetch(`${apiUrl}/search?title=${encodeURIComponent(title)}`);
+        const tasks = await response.json();
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = '';
+        tasks.forEach(task => {
+          const li = document.createElement('li');
+          li.textContent = task.title;
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.onclick = () => deleteTask(task._id);
+          li.appendChild(deleteButton);
+          taskList.appendChild(li);
+        });
+      }
+    }
+
+    fetchTasks();</script>
+</body>
+</html>
+*/
