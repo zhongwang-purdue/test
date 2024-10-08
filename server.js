@@ -9,6 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const path = require('path');
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Replace the connection string to connect to Amazon DocumentDB
 mongoose.connect('mongodb://test:12345678@docdb-2024-10-08-21-29-15.cluster-cz4o2wqy0ij3.us-east-2.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', {
   useNewUrlParser: true,
