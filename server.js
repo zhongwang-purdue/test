@@ -9,7 +9,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/todolist', {
+// Replace the connection string to connect to Amazon DocumentDB
+mongoose.connect('mongodb://test:12345678@docdb-2024-10-08-21-29-15.cluster-cz4o2wqy0ij3.us-east-2.docdb.amazonaws.com:27017/?tls=true&tlsCAFile=global-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -47,6 +48,6 @@ app.get('/tasks/search', async (req, res) => {
   res.send(tasks);
 });
 
-app.listen(5000, () => {
+app.listen(5000, '0.0.0.0', () => {
   console.log('Server is running on port 5000');
 });
